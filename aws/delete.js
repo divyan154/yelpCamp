@@ -1,6 +1,6 @@
 const { s3 } = require("./upload");
 //deleting image
-const myBucket = process.env.BUCKET_NAME;
+const myBucket = process.env.My_BUCKET_NAME;
 const {
   DeleteObjectsCommand,
   S3ServiceException,

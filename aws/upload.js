@@ -4,11 +4,11 @@ const { S3Client } = require("@aws-sdk/client-s3");
 const s3 = new S3Client({
   region: "ap-south-1",
   credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    accessKeyId: process.env.My_AWS_ACCESS_KEY,
+    secretAccessKey: process.env.My_AWS_SECRET_ACCESS_KEY,
   },
 });
-const myBucket = process.env.BUCKET_NAME;
+const myBucket = process.env.My_BUCKET_NAME;
 module.exports.upload = multer({
   storage: multers3({
     s3: s3,
