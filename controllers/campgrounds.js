@@ -81,7 +81,7 @@ module.exports.updateCampground = async (req, res) => {
     // console.log(uploadedFiles);
     updatedCampground.images.push(...uploadedFiles);
   }
-  if (req.body.deleteImages.length) {
+  if (req.body.deleteImages) {
     const keys = req.body.deleteImages;
     main({ myBucket, keys });
     await updatedCampground.updateOne({
