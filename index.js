@@ -14,8 +14,8 @@ const mongoSanitize = require("express-mongo-sanitize");
 const passport = require("passport");
 const localStrategy = require("passport-local");
 
-const catchAsync = require("./utils/catchAsync");
-const ExpressError = require("./utils/ExpressError");
+const catchAsync = require("./utils/catchAsync.js");
+const ExpressError = require("./utils/ExpressError.js");
 const mongoose = require("mongoose");
 
 const DB_URL = process.env.db_url || "mongodb://localhost:27017/yelp-camp";
@@ -26,7 +26,7 @@ const methodOverride = require("method-override");
 app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "public")));
 
-const Campground = require("./models/campground");
+const Campground = require("./models/campground.js");
 const Review = require("./models/review.js");
 const User = require("./models/user.js");
 
@@ -49,6 +49,7 @@ app.use(express.urlencoded({ extended: true }));
 
 const secret = process.env.secret || "thisisnotgoodsecretkey";
 const sessionConfig = {
+  name:"session",
   secret,
   resave: false,
   saveUninitialized: true,
@@ -86,7 +87,7 @@ passport.deserializeUser(function (user, done) {
 
 app.use((req, res, next) => {
   // console.log(`req.session.returnTo":,${req.session.returnTo}`);
-  console.log(req.query);
+  
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
   res.locals.currentUser = req.user;
