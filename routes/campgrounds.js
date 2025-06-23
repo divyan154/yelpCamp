@@ -20,8 +20,7 @@ router
     validateCampground,
     catchAsync(campController.createCampground)
   );
-// keys = ["pexels-quang-nguyen-vinh-222549-2131614.jpg"];
-// const myBucket = process.env.BUCKET_NAME;
+
 
 router.get("/new", isLoggedIn, campController.renderNewForm);
 
